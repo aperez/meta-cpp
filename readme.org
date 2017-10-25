@@ -1,0 +1,13 @@
+#+TITLE: Compile-time computation via C++ Template Metaprogramming
+#+AUTHOR: Alexandre Perez
+#+OPTIONS: toc:nil num:nil
+
+This repository contains compile-time implementations of common programming
+exercises. Compile-time computation is achieved through C++ template
+metaprogramming, mostly using template matching, type aliasing and subtyping as
+basic building blocks.
+
+* Contents
+  - [[./common/][common/]]: libraries implementing shared functionality. Contains
+    implementations of type lists, conditionals, lambdas, among others.
+  - [[./turing-machine][turing-machine/]]: a Turing Machine simulator.
