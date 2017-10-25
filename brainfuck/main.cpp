@@ -1,4 +1,5 @@
 #include "common/string.hpp"
+#include "common/printer.hpp"
 
 #include "interpreter.hpp"
 
@@ -18,6 +19,7 @@ int main() {
                           '-','.','>','>','+','.','>','+','+','.'>;
 
     using hw_output = meta::brainfuck::interpret<hello_world>::out;
+    meta::printer<hw_output>::print();
 
     return 0;
 }
