@@ -11,3 +11,4 @@ basic building blocks.
   - [[./common/][common/]]: libraries implementing shared functionality. Contains
     implementations of type lists, conditionals, lambdas, among others.
   - [[./turing-machine][turing-machine/]]: a Turing Machine simulator.
+  - [[./brainfuck/][brainfuck/]]: an interpreter for the Brainfuck programming language.

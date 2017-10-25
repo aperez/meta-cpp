@@ -13,3 +13,4 @@ function(add_meta_project arg)
 endfunction(add_meta_project)
 
 add_meta_project(turing-machine)
+add_meta_project(brainfuck)
