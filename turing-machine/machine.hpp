@@ -54,7 +54,7 @@ struct _eval<t, state, 0> {
     using result = t;
 };
 
-template <typename t, typename state, int iterations>
+template <typename t, typename state, size_t iterations>
 using eval = typename _eval<t, state, iterations>::result;
 
 }
