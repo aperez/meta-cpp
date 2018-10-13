@@ -1,6 +1,7 @@
 #pragma once
 
 #include "macros.hpp"
+#include "numeric.hpp"
 
 namespace meta {
 
@@ -70,5 +71,28 @@ struct _reverse<list<>, reversed> {
 };
 
 CREATE_ALIAS(reverse);
+
+template <typename typelist, typename size = num_zero>
+struct _length {
+    using result = size;
+};
+
+template <typename head, typename... tail, typename n>
+struct _length<list<head, tail...>, n> :
+        public _length<list<tail...>, inc<n>> {};
+
+CREATE_ALIAS(length);
+
+template <typename typelist, typename n>
+struct _nth {
+    using result = typename _nth<pop<typelist>, dec<n>>::result;
+};
+
+template <typename typelist>
+struct _nth<typelist, num_zero> {
+    using result = peek<typelist>;
+};
+
+CREATE_ALIAS(nth);
 
 }
