@@ -12,3 +12,4 @@ basic building blocks.
     implementations of type lists, conditionals, lambdas, among others.
   - [[./turing-machine][turing-machine/]]: a Turing Machine simulator.
   - [[./brainfuck/][brainfuck/]]: an interpreter for the Brainfuck programming language.
+  - [[./game-of-life/][game-of-life/]]: Conway's game of life.

@@ -14,3 +14,4 @@ endfunction(add_meta_project)
 
 add_meta_project(turing-machine)
 add_meta_project(brainfuck)
+add_meta_project(game-of-life)
