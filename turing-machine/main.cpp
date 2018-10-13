@@ -1,5 +1,6 @@
 #include "common/string.hpp"
 #include "common/printer.hpp"
+#include "common/numeric.hpp"
 
 #include "tape.hpp"
 #include "machine.hpp"
@@ -27,7 +28,7 @@ int main() {
     };
 
     using initial_tape = tape<>;
-    using final_tape = eval<initial_tape, q1, 50>;
+    using final_tape = eval<initial_tape, q1, meta::num<50>>;
     tape_printer<final_tape>::print();
 
     meta::newline_printer::print();

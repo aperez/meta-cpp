@@ -3,6 +3,7 @@
 #include "common/list.hpp"
 #include "common/lambda.hpp"
 #include "common/conditional.hpp"
+#include "common/numeric.hpp"
 
 #include "tape.hpp"
 
@@ -36,7 +37,7 @@ CREATE_ALIAS(select_transition);
 
 template <typename t,
           typename state,
-          int iterations>
+          typename iterations>
 struct _eval {
     using transition = select_transition<typename state::transitions,
                                          typename t::get>;
@@ -45,17 +46,16 @@ struct _eval {
                                   t>;
     using result = typename _eval<next_tape,
                                   typename transition::next,
-                                  iterations - 1>::result;
+                                  dec<iterations>>::result;
 };
 
 template <typename t,
           typename state>
-struct _eval<t, state, 0> {
+struct _eval<t, state, num_zero> {
     using result = t;
 };
 
-template <typename t, typename state, size_t iterations>
-using eval = typename _eval<t, state, iterations>::result;
+CREATE_ALIAS(eval);
 
 }
 }

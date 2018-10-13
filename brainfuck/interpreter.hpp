@@ -2,6 +2,7 @@
 
 #include "common/conditional.hpp"
 #include "common/string.hpp"
+#include "common/numeric.hpp"
 
 #include "memory.hpp"
 
@@ -67,20 +68,20 @@ struct _interpret_command<chr<','>, st> {
 
 CREATE_ALIAS(interpret_command);
 
-template <typename program, typename loop = list<>, size_t counter = 0>
+template <typename program, typename loop = list<>, typename counter = num_zero>
 struct find_loop :
         public find_loop<pop<program>, append<peek<program>, loop>, counter> {};
 
-template <typename... cmds, typename loop, size_t counter>
+template <typename... cmds, typename loop, typename counter>
 struct find_loop<list<chr<'['>, cmds...>, loop, counter> :
-        public find_loop<list<cmds...>, append<chr<'['>, loop>, counter + 1> {};
+        public find_loop<list<cmds...>, append<chr<'['>, loop>, inc<counter>> {};
 
-template <typename... cmds, typename loop, size_t counter>
+template <typename... cmds, typename loop, typename counter>
 struct find_loop<list<chr<']'>, cmds...>, loop, counter> :
-        public find_loop<list<cmds...>, append<chr<']'>, loop>, counter - 1> {};
+        public find_loop<list<cmds...>, append<chr<']'>, loop>, dec<counter>> {};
 
 template <typename... cmds, typename loop>
-struct find_loop<list<chr<']'>, cmds...>, loop, 0> {
+struct find_loop<list<chr<']'>, cmds...>, loop, num_zero> {
     using remaining_program = list<cmds...>;
     using loop_program = loop;
 };
