@@ -70,4 +70,15 @@ struct _fold_left<l, acc, list<>> {
 template <typename l, typename acc, typename typelist>
 using fold_left = typename _fold_left<l, acc, typelist>::result;
 
+template <typename l, typename elem, typename typelist>
+struct _caller_appender {
+    using result = append<call<l, elem>, typelist>;
+};
+
+CREATE_ALIAS(caller_appender);
+using caller_appender_l = lambda<caller_appender>;
+
+template <typename l, typename typelist>
+using map = apply_right<partial<caller_appender_l, l>, typelist, list<>>;
+
 }
